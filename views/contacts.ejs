@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mon Back Office</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script src="https://kit.fontawesome.com/a41e9403cf.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center mb-5">My Contacts</h1>
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active">
+            <a href="/contacts">Contacts</a>
+          </li>
+        </ol>
+      </nav>
+
+      <form action="/filter" method="POST">
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="ageMin">Age min</label>
+            <input type="text" name="ageMin" class="form-control" id="ageMin" value=0>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="ageMax">Age max</label>
+            <input type="text" name="ageMax" class="form-control" id="ageMax" value=120>
+          </div>
+          <div class="form-group col-md-3">
+            <label for="contactType">Contact Type</label>
+            <select id="contactType" name="contactType" class="form-control">
+                <option selected value="famille">Family</option>
+                <option value="amis">Friend</option>
+                <option value="pro">Professional</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-dark form-group col-md-3 h-50 align-self-end">Filter</button>
+        </div>
+      </form>
+
+      <ul class="list-group">
+        <% for( let i = 0; i < contacts.length; i++ ) { %>
+        <li class="list-group-item d-flex justify-content-between">
+            <div>
+                <span class="font-weight-bold"><%= contacts[i].firstname %></span>
+                <span class="font-weight-bold"><%= contacts[i].lastname.toUpperCase() %></span>
+                <span><%= contacts[i].age %> ans</span>
+                <span class="badge badge-dark"><%= contacts[i].contactType %></span>
+                <span class="badge badge-secondary"><%= contacts[i].email %></span>
+            </div>
+            <div>
+                <a href="/edit-page?email=<%= contacts[i].email %>" class="mr-2"><i class="far fa-edit"></i></a>
+                <a href="/delete-contact?email=<%= contacts[i].email %>"><i class="far fa-trash-alt"></i></a>
+            </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </body>
+</html>
