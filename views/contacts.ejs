@@ -28,18 +28,18 @@
         <div class="form-row">
           <div class="form-group col-md-3">
             <label for="ageMin">Age min</label>
-            <input type="text" name="ageMin" class="form-control" id="ageMin" value=0>
+            <input type="text" name="ageMin" class="form-control" id="ageMin" value=<%= ageMin %>> 
           </div>
           <div class="form-group col-md-3">
             <label for="ageMax">Age max</label>
-            <input type="text" name="ageMax" class="form-control" id="ageMax" value=120>
+            <input type="text" name="ageMax" class="form-control" id="ageMax" value=<%= ageMax %>>
           </div>
           <div class="form-group col-md-3">
             <label for="contactType">Contact Type</label>
             <select id="contactType" name="contactType" class="form-control">
-                <option selected value="famille">Family</option>
-                <option value="amis">Friend</option>
-                <option value="pro">Professional</option>
+              <option value="famille" <%= contactType === 'famille' ? 'selected': '' %>>Family</option>
+              <option value="amis" <%= contactType === 'amis' ? 'selected': '' %>>Friend</option>
+              <option value="pro" <%= contactType === 'pro' ? 'selected': '' %>>Professional</option>
             </select>
           </div>
           <button type="submit" class="btn btn-dark form-group col-md-3 h-50 align-self-end">Filter</button>
