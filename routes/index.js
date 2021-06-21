@@ -32,6 +32,7 @@ router.post('/add-contact', async (req, res) => {
 
 router.get('/contacts', async (req, res) => {
   const contacts = await contactModel.find();
+  console.log(contacts);
 
   res.render('contacts', { 
     contacts, 
